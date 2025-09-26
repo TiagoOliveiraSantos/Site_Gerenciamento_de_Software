@@ -1,25 +1,69 @@
-// 1. A FUNÇÃO FOI RENOMEADA PARA REFLETIR SUA NOVA FINALIDADE
-function calcularSubtracaoInversa() {
-    // 2. OBTER OS VALORES DOS CAMPOS DE ENTRADA (Lógica inalterada)
-    let valor1String = document.getElementById('valor1').value;
-    let valor2String = document.getElementById('valor2').value;
+        // Selecionando os elementos do DOM
+        const valor1Input = document.getElementById('valor1');
+        const valor2Input = document.getElementById('valor2');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resultadoContainer = document.getElementById('resultado-container');
+        const resultadoDiv = document.getElementById('resultado');
+        const erroDiv = document.getElementById('mensagem-erro');
 
-    // 3. CONVERTER OS VALORES DE TEXTO PARA NÚMERO (Lógica inalterada)
-    let valor1 = parseFloat(valor1String);
-    let valor2 = parseFloat(valor2String);
-    
-    // 4. VERIFICAR SE OS VALORES SÃO NÚMEROS VÁLIDOS (Lógica inalterada)
-    if (isNaN(valor1) || isNaN(valor2)) {
-        alert("Por favor, digite valores numéricos válidos em ambos os campos.");
-        return;
-    }
+        // Função para mostrar/ocultar a mensagem de erro
+        function mostrarErro(mensagem) {
+            erroDiv.textContent = mensagem;
+            erroDiv.style.display = 'block';
+            resultadoContainer.style.height = '0px'; // Esconde o resultado se houver erro
+        }
 
-    // 5. REALIZAR O CÁLCULO DA SUBTRAÇÃO INVERSA (valor2 - valor1)
-    // A lógica anterior de média ponderada foi removida.
-    let resultadoSubtracao = valor2 - valor1;
+        // Função principal de cálculo
+        function calcularSubtracaoInversa() {
+            // Limpa erros e resultados anteriores
+            erroDiv.style.display = 'none';
+            resultadoContainer.style.height = '0px';
 
-    // 6. EXIBIR O RESULTADO NA PÁGINA
-    // A mensagem e a variável foram atualizadas para refletir o novo cálculo.
-    // O método .toFixed(2) foi mantido para formatar o resultado com duas casas decimais.
-    document.getElementById('resultado').innerHTML = "O resultado da subtração (valor2 - valor1) é: " + resultadoSubtracao.toFixed(2);
-}
+            const valor1String = valor1Input.value;
+            const valor2String = valor2Input.value;
+
+            // 1. Validação de campos vazios
+            if (valor1String === '' || valor2String === '') {
+                mostrarErro('Por favor, preencha ambos os campos.');
+                return;
+            }
+
+            // 2. Conversão para número
+            const valor1 = parseFloat(valor1String);
+            const valor2 = parseFloat(valor2String);
+            
+            // 3. Validação para garantir que são números válidos
+            if (isNaN(valor1) || isNaN(valor2)) {
+                mostrarErro('Por favor, digite valores numéricos válidos.');
+                return;
+            }
+
+            // 4. Realiza o cálculo
+            const resultadoSubtracao = valor2 - valor1;
+
+            // 5. Exibe o resultado de forma clara e formatada
+            resultadoDiv.innerHTML = `
+                <p class="text-sm text-green-700">O resultado da operação é:</p>
+                <p class="text-xl font-bold text-green-800">${resultadoSubtracao.toFixed(2)}</p>
+                <p class="text-xs text-slate-500 mt-2">(${valor2.toFixed(2)} - ${valor1.toFixed(2)})</p>
+            `;
+
+            // 6. Mostra o container do resultado com uma animação suave
+            resultadoContainer.style.height = resultadoDiv.scrollHeight + 'px';
+        }
+
+        // Adiciona o evento de clique ao botão
+        calculateBtn.addEventListener('click', calcularSubtracaoInversa);
+
+        // Opcional: Permite calcular pressionando "Enter" nos campos de input
+        valor1Input.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                calculateBtn.click();
+            }
+        });
+
+        valor2Input.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                calculateBtn.click();
+            }
+        });
