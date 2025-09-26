@@ -1,0 +1,58 @@
+
+/* O seletor 'body' aplica estilos a todo o corpo da página. */
+body {
+    font-family: Arial, sans-serif; /* Define a família da fonte. */
+    background-color: #f0f0f0;      /* Cor de fundo cinza claro. */
+    display: flex;                  /* Usa o modelo Flexbox para centralizar o conteúdo. */
+    justify-content: center;        /* Centraliza o conteúdo horizontalmente. */
+    align-items: center;            /* Centraliza o conteúdo verticalmente. */
+    height: 100vh;                  /* Define a altura do corpo para 100% da altura da tela. */
+    margin: 0;                      /* Remove a margem padrão do navegador. */
+}
+
+/* O seletor '.container' aplica estilos ao elemento com a classe 'container'. */
+.container {
+    background-color: white;        /* Cor de fundo branca para o contêiner. */
+    padding: 20px;                  /* Espaçamento interno de 20 pixels. */
+    border-radius: 8px;             /* Bordas arredondadas. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade. */
+    text-align: center;             /* Centraliza todo o texto dentro do contêiner. */
+}
+
+/* O seletor 'h1' estiliza todos os elementos <h1>. */
+h1 {
+    color: #333; /* Cor do texto cinza escuro. */
+}
+
+/* O seletor 'input' estiliza todos os campos de entrada. */
+input {
+    width: 90%;                     /* Largura de 90% do contêiner pai. */
+    padding: 10px;                  /* Espaçamento interno. */
+    margin-bottom: 10px;            /* Margem na parte inferior para separar os elementos. */
+    border: 1px solid #ccc;         /* Borda cinza claro. */
+    border-radius: 4px;             /* Bordas levemente arredondadas. */
+}
+
+/* O seletor 'button' estiliza o botão. */
+button {
+    width: 95%;                     /* Largura de 95% do contêiner pai. */
+    padding: 10px;                  /* Espaçamento interno. */
+    background-color: #007bff;      /* Cor de fundo azul. */
+    color: white;                   /* Cor do texto branca. */
+    border: none;                   /* Remove a borda padrão. */
+    border-radius: 4px;             /* Bordas arredondadas. */
+    cursor: pointer;                /* Muda o cursor para uma mãozinha ao passar o mouse. */
+    font-size: 16px;                /* Tamanho da fonte. */
+}
+
+/* O seletor 'button:hover' aplica estilos quando o mouse está sobre o botão. */
+button:hover {
+    background-color: #0056b3;      /* Escurece a cor de fundo para dar feedback visual. */
+}
+
+/* O seletor '#resultado' estiliza o elemento com o id 'resultado'. */
+#resultado {
+    margin-top: 20px;               /* Adiciona uma margem no topo para separar do botão. */
+    font-size: 1.2em;               /* Tamanho da fonte um pouco maior. */
+    color: #555;                    /* Cor do texto cinza. */
+}
